@@ -6,26 +6,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>animation 1</title>
 	<style>
-		#bg {
+		.bg {
 			width: 100vw;
 			padding-top: 90px;
 			background-image: url(images/tree_grass.gif);
-			animation: move_bg  8s linear infinite paused;
+			animation: move_bg  8s linear infinite;
+			animation-play-state: paused;
 		}
 
-		#man {
+		.man {
 			width: 120px;
 			height: 160px;
 			background-image: url(images/walk_sprite.png);
-			animation: walk 1s steps(8) infinite paused;
+			animation: walk 1s steps(8) infinite;
+			animation-play-state: paused;
 		}
 
-		#man.walk {
-			animation: walk 1s steps(8) infinite running;
-		}
-
-		#bg.move {
-			animation: move_bg 8s linear infinite running;
+		.run {
+			animation-play-state: running;
 		}
 
 		@keyframes walk {
@@ -44,26 +42,26 @@
 </head>
 
 <body>
-	<div id="bg">
-		<div id="man"></div>
+	<div class="bg">
+		<div class="man"></div>
 	</div>
 	<button id="walk_btn">walk</button>
 	<button id="move_btn">move</button>
 
 	<script>
-		var man = document.querySelector('#man')
-		var bg = document.querySelector('#bg')
+		var man = document.querySelector('.man')
+		var bg = document.querySelector('.bg')
 		var walk_btn = document.querySelector('#walk_btn')
 		var move_btn = document.querySelector('#move_btn')
 		walk_btn.addEventListener('click', walk)
 		move_btn.addEventListener('click', move)
 
 		function walk(){
-			man.classList.toggle('walk')
+			man.classList.toggle('run')
 		}
 
 		function move(){
-			bg.classList.toggle('move')
+			bg.classList.toggle('run')
 		}
 	</script>
 </body>
