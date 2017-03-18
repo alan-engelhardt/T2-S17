@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>animation 1</title>
+	<style>
+		#bg {
+			width: 100vw;
+			padding-top: 90px;
+			background-image: url(images/tree_grass.gif);
+		}
+
+		#man {
+			width: 120px;
+			height: 160px;
+			background-image: url(images/walk_sprite.png);
+		}
+
+		#man.walk {
+			animation: walk 1s steps(8) infinite;
+		}
+
+		#bg.move {
+			animation: move_bg 8s linear infinite;
+		}
+
+		@keyframes walk {
+			to {
+				background-position: -960px;
+			}
+		}
+
+		@keyframes move_bg {
+			to {
+				background-position: -400px;
+				padding-left: 100vw;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="bg">
+		<div id="man"></div>
+	</div>
+	<button id="walk_btn">walk</button>
+	<button id="move_btn">move</button>
+
+	<script>
+		var man = document.querySelector('#man')
+		var bg = document.querySelector('#bg')
+		var walk_btn = document.querySelector('#walk_btn')
+		var move_btn = document.querySelector('#move_btn')
+		walk_btn.addEventListener('click', walk)
+		move_btn.addEventListener('click', move)
+
+		function walk(){
+			man.classList.toggle('walk')
+		}
+
+		function move(){
+			bg.classList.toggle('move')
+		}
+	</script>
+</body>
+
+</html>
