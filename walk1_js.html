@@ -10,20 +10,22 @@
 			width: 100vw;
 			padding-top: 90px;
 			background-image: url(images/tree_grass.gif);
+			animation: move_bg  8s linear infinite paused;
 		}
 
 		#man {
 			width: 120px;
 			height: 160px;
 			background-image: url(images/walk_sprite.png);
+			animation: walk 1s steps(8) infinite paused;
 		}
 
 		#man.walk {
-			animation: walk 1s steps(8) infinite;
+			animation: walk 1s steps(8) infinite running;
 		}
 
 		#bg.move {
-			animation: move_bg 8s linear infinite;
+			animation: move_bg 8s linear infinite running;
 		}
 
 		@keyframes walk {
