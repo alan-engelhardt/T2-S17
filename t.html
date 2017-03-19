@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>t</title>
+</head>
+
+<body>
+	<ul id="l1">
+		<li>Apples</li>
+		<li>Oranges</li>
+		<li>Milk</li>
+		<li>Bread</li>
+		<li>Fish</li>
+		<li>Cabbage</li>
+	</ul>
+	<ul id="l2"></ul>
+
+	<script>
+		let lis = document.querySelectorAll('li')
+		let l1 = document.querySelector('#l1')
+		let l2 = document.querySelector('#l2')
+		lis.forEach(function (i) {
+			i.addEventListener('click', function () {
+				console.log(this.parentElement)
+				if (this.parentElement == l1) {
+					this.style.color = "red"
+					l2.appendChild(this)
+				}else{
+					this.style.color = "blue"
+					l1.appendChild(this)
+				}
+			})
+		})
+	</script>
+</body>
+
+</html>

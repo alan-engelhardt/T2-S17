@@ -7,20 +7,34 @@
 	<title>animation 1</title>
 	<style>
 		div{
+			margin: 1em;
 			width: 100px;
 			height: 100px;
 			background-color: red;
-			transition: width .5s cubic-bezier(.5,.5,.75,2), background-color 5s;
+			transition: 1s cubic-bezier(.5,.5,1,2);
 		}
-		div:hover{
-			width: 500px;
+		div:target{
+			width: 300px;
+			height: 200px;
 			background-color: blue;
 		}
 	</style>
 </head>
 
 <body>
-	<div></div>
+	<div id="thing1"></div>
+	<div id="thing2"></div>
+	<div id="thing3"></div>
+	<div id="thing4"></div>
+	<div id="thing5"></div>
+	<div id="thing6"></div>
+	<a href="#thing1">run 1</a>
+	<a href="#thing2">run 2</a>
+	<a href="#thing3">run 3</a>
+	<a href="#thing4">run 4</a>
+	<a href="#thing5">run 5</a>
+	<a href="#thing6">run 6</a>
+	<a href="#">reset</a>
 </body>
 
 </html>

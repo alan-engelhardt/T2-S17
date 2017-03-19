@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transform 1</title>
+
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			animation: move 2s alternate 4;
+		}
+
+		@keyframes move {
+			100% {
+				transform: translate(200px, 100px) scale(2) rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+
+</html>

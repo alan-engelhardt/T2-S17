@@ -14,9 +14,6 @@
 		#thing1:target {
 			animation: move 2s forwards;
 		}
-		#thing2:target {
-			animation: move 2s reverse forwards;
-		}
 
 		@keyframes move {
 			25%{
@@ -24,7 +21,7 @@
 				background-color: yellow;
 			}
 			50% {
-				transform: translate(200px, 200px) scale(1) rotate(-180deg);
+				transform: translate(200px, 200px) scale(2) rotate(-180deg);
 				background-color: green;
 			}
 			75% {
@@ -42,7 +39,6 @@
 <body>
 	<a href="#thing1">Run</a>
 	<div id="thing1"></div>
-	<a href="#thing2">Run</a>
-	<div id="thing2"></div>
 </body>
+
 </html>

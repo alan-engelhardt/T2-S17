@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta charset="UTF-8">
+        <title>rubber transition effect</title>
+        <style>
+            #thing {
+				margin: 5em;
+                background-image: url(images/mouth.png);
+                width: 400px;
+                height: 188px;
+                animation: rubberBand 1s infinite;
+                animation-play-state: paused;
+            }
+
+            #thing:hover {
+                animation-play-state: running;
+            }
+
+            @keyframes rubberBand {
+                0% {
+                    transform: scale(1, 1);
+                }
+
+                30% {
+                    transform: scale(1.25, 0.75);
+                }
+
+                40% {
+                    transform: scale(0.75, 1.25);
+                }
+
+                50% {
+                    transform: scale(1.15, 0.85);
+                }
+
+                65% {
+                    transform: scale(.95, 1.05);
+                }
+
+                75% {
+                    transform: scale(1.05, .95);
+                }
+
+                100% {
+                    transform: scale(1, 1);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="thing"></div>
+    </body>
+</html>

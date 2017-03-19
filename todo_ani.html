@@ -6,9 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>todo ani</title>
 	<style>
-		#l1{
+		#l1 {
 			border-bottom: 1px solid;
 		}
+
 		.ani {
 			animation: move .3s linear;
 		}
@@ -44,18 +45,21 @@
 		function swap(i) {
 			i.addEventListener('click', function () {
 				let cln = i.cloneNode(true)
-				if (this.parentElement == l1) {
-					this.addEventListener('animationend', function () {
-						this.classList.remove('ani')
-						cln.style.color = "red"
-						l1.removeChild(this)
-						l2.appendChild(cln)
-					})
-					this.classList.add('ani')
-				} else {
-					cln.style.color = "blue"
-					l1.appendChild(cln)
-				}
+				cln.addEventListener('click', function () {
+					if (this.parentElement == l2) {
+						console.log(this);
+						cln.style.color = "blue"
+						l1.appendChild(cln)
+					}
+				})
+				this.addEventListener('animationend', function () {
+					cln.classList.remove('ani')
+					cln.style.color = "red"
+					l1.removeChild(this)
+					l2.appendChild(cln)
+				})
+				this.classList.add('ani')
+
 			})
 		}
 	</script>
