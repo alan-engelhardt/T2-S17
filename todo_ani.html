@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>todo ani</title>
+	<style>
+		#l1{
+			border-bottom: 1px solid;
+		}
+		.ani {
+			animation: move .3s linear;
+		}
+
+		@keyframes move {
+			100% {
+				transform: translate(0, 100px);
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h4>To do</h4>
+	<ul id="l1">
+		<li>Apples</li>
+		<li>Oranges</li>
+		<li>Milk</li>
+		<li>Bread</li>
+		<li>Fish</li>
+		<li>Cabbage</li>
+	</ul>
+	<ul id="l2"></ul>
+
+	<script>
+		let lis = document.querySelectorAll('li')
+		let l1 = document.querySelector('#l1')
+		let l2 = document.querySelector('#l2')
+
+		lis.forEach(swap)
+
+		function swap(i) {
+			i.addEventListener('click', function () {
+				let cln = i.cloneNode(true)
+				if (this.parentElement == l1) {
+					this.addEventListener('animationend', function () {
+						this.classList.remove('ani')
+						cln.style.color = "red"
+						l1.removeChild(this)
+						l2.appendChild(cln)
+					})
+					this.classList.add('ani')
+				} else {
+					cln.style.color = "blue"
+					l1.appendChild(cln)
+				}
+			})
+		}
+	</script>
+</body>
+
+</html>
