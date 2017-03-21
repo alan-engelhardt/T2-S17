@@ -12,9 +12,10 @@
 
 		 #fox{
 			 position: fixed;
-			 width: 500px;
-			 height: 500px;
-			 background-image: url(images/single/ani_1.png)
+			 width: 100vw;
+			 max-height: 100vh;
+			 background-image: url(images/single/ani_1.png);
+			 background-size: contain;
 		}
 	</style>
 </head>
@@ -27,7 +28,8 @@
 		window.addEventListener('scroll', track)
 
 		function track() {
-			fox.style.backgroundImage = "url(images/single/ani_" + window.Math.floor(pageYOffset/10+2) + ".png)"
+			console.log(window.Math.floor(pageYOffset/10 % 8)+1)
+			fox.style.backgroundImage = "url(images/single/ani_" + window.Math.floor((pageYOffset/10 % 8)+1) + ".png)"
 		}
 	</script>
 </body>

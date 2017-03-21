@@ -4,11 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>todo</title>
+	<title>t</title>
 </head>
 
 <body>
-	<h4>To do</h4>
 	<ul id="l1">
 		<li>Apples</li>
 		<li>Oranges</li>
@@ -16,29 +15,22 @@
 		<li>Bread</li>
 		<li>Fish</li>
 		<li>Cabbage</li>
-		<li>Icecream</li>
-		<li>Lettuce</li>
 	</ul>
-	<h4>Done</h4>
 	<ul id="l2"></ul>
 
 	<script>
 		let lis = document.querySelectorAll('li')
 		let l1 = document.querySelector('#l1')
 		let l2 = document.querySelector('#l2')
-		lis.forEach(function (i, nr) {
-			console.log(nr)
+		lis.forEach(function (i) {
 			i.addEventListener('click', function () {
+				console.log(this.parentElement)
 				if (this.parentElement == l1) {
-					console.log(nr + 1)
-					//l1.removeChild(this)
 					this.style.color = "red"
-					l2.insertBefore(this, l2.childNodes[nr + 1])
-				} else {
-					console.log(nr + 1)
-					//l2.removeChild(this)
+					l2.appendChild(this)
+				}else{
 					this.style.color = "blue"
-					l1.insertBefore(this, l1.childNodes[nr + 1])
+					l1.appendChild(this)
 				}
 			})
 		})

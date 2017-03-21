@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>animation 1</title>
+	<title>sprite</title>
 	<style>
-		#bg {
-			width: 100vw;
-			padding-top: 90px;
-			background-image: url(images/tree_grass.gif);
-			animation: move_bg 8s linear infinite;
-		}
-
-		#man {
+		.man{
 			width: 120px;
 			height: 160px;
 			background-image: url(images/walk_sprite.png);
+			animation: walk 1s infinite steps(8);
 		}
-
-		#man:target{
-			animation: walk 1s steps(8) infinite;
+		.bg{
+			padding-top: 90px;
+			background-image: url(images/tree_grass.gif);
+			animation: bg 8s infinite linear;
 		}
 
 		@keyframes walk {
@@ -29,20 +23,19 @@
 			}
 		}
 
-		@keyframes move_bg {
+		@keyframes bg {
 			to{
 				background-position: -400px;
-				padding-left: 100vw;
+				padding-left: 100%;
 			}
 		}
 	</style>
 </head>
 
 <body>
-	<div id="bg">
-		<div id="man"></div>
+	<div class="bg">
+		<div class="man"></div>
 	</div>
-<a href="#man">walk</a>
 </body>
 
 </html>
