@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>svg1</title>
+	<link rel="stylesheet" href="">
+	<style>
+		.draw {
+			animation: dash 2s linear forwards;
+		}
+
+		@keyframes dash {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+
+		.path {
+			fill: none;
+			stroke: none;
+			stroke: #789;
+			stroke-dasharray: 1;
+			stroke-dashoffset: 1;
+			stroke-width: 5;
+		}
+	</style>
+</head>
+
+<body>
+
+	<svg version="1.1" id="mySvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 200" style="enable-background:new 0 0 600 200;" xml:space="preserve">
+		<path class="path" pathLength=1 d="M35.7,176.3c0,0,59.9-138.2,167.6-144.4s72,131.9,170.5,124.2c98.6-7.7,196.6-130,196.6-130" />
+	</svg>
+
+	<script>
+		var path = document.querySelector('#mySvg .path');
+		path.classList.add('draw')
+	</script>
+</body>
+
+</html>
