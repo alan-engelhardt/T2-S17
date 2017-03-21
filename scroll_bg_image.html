@@ -6,30 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>scroll</title>
 	<style>
-		div {
-			height: 3000px;
+		* {
+			margin: 0;
+			padding: 0;
 		}
 
-		 #fox{
-			 position: fixed;
-			 width: 100vw;
-			 max-height: 100vh;
-			 background-image: url(images/single/ani_1.png);
-			 background-size: contain;
+		.spacer {
+			height: 5000px;
+			width: 5000px;
+		}
+		#preloader{
+			background-image: url(images/ani2/anib_2.png), url(images/ani2/anib_3.png), url(images/ani2/anib_3.png), url(images/ani2/anib_4.png), url(images/ani2/anib_5.png), url(images/ani2/anib_6.png), url(images/ani2/anib_7.png), url(images/ani2/anib_8.png), url(images/ani2/anib_9.png), url(images/ani2/anib_10.png);
+		}
+		#fox {
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			background-image: url(images/ani2/anib_1.png);
+			background-size: contain;
 		}
 	</style>
 </head>
 
 <body>
+	<div id="preloader"></div>
 	<div id="fox"></div>
-	<div></div>
+	<div class="spacer"></div>
 	<script>
 		let fox = document.querySelector('#fox')
 		window.addEventListener('scroll', track)
 
 		function track() {
-			console.log(window.Math.floor(pageYOffset/10 % 8)+1)
-			fox.style.backgroundImage = "url(images/single/ani_" + window.Math.floor((pageYOffset/10 % 8)+1) + ".png)"
+			console.log(pageXOffset + pageYOffset)
+			fox.style.backgroundImage = "url(images/ani2/anib_" + window.Math.floor(((pageXOffset + pageYOffset) / 20 % 10) + 1) + ".png)"
 		}
 	</script>
 </body>
