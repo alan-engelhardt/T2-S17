@@ -8,10 +8,14 @@
 	<style>
 		div {
 			height: 3000px;
+			width: 3000px;
+			border: dotted 3px;
+			background: radial-gradient(red, blue);
 		}
 
 		h3 {
 			position: fixed;
+			margin: 1em;
 		}
 	</style>
 </head>
@@ -20,18 +24,18 @@
 	<h3>You haven't scrolled yet</h3>
 	<div></div>
 	<script>
-		let header = document.querySelector('h3')
+		let h3 = document.querySelector('h3')
 		window.addEventListener('scroll', track)
 
 		function track() {
 			console.log(window.pageYOffset)
-			header.innerHTML = "You have scrolled " + window.pageYOffset + " px from top of window"
+			h3.innerHTML = "You have scrolled " + window.pageXOffset + " px from the left and " + window.pageYOffset + " px from the top"
 			if(window.pageYOffset > 1000){
-				header.style.color="red"
+				h3.style.color="blue"
 			}else if(window.pageYOffset > 500){
-				header.style.color="blue"
+				h3.style.color="red"
 			}else{
-				header.style.color="inherit"
+				h3.style.color="white"
 			}
 		}
 	</script>
