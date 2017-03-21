@@ -8,35 +8,25 @@
 	<link rel="stylesheet" href="">
 	<style>
 		.draw {
-			animation: dash 1s linear forwards;
+			animation: dash 2s linear forwards;
 		}
 
 		@keyframes dash {
-			to {
+			75%{
+				fill: #FFF;
 				stroke-dashoffset: 0;
+			}
+			to {
+				fill: #345;
 			}
 		}
 
 		.cls-1 {
-			fill: none;
-			stroke: none;
+			fill: #FFF;
 			stroke: #345;
+			stroke-width: 1;
 			stroke-dasharray: 1;
 			stroke-dashoffset: 1;
-			stroke-width: 1;
-		}
-
-		.fill {
-			opacity: .5;
-			fill: #345;
-			stroke: none;
-			animation: fadein 1s forwards;
-		}
-
-		@keyframes fadein{
-			to{
-				opacity: 1;
-			}
 		}
 	</style>
 </head>
@@ -52,12 +42,9 @@
 		paths.forEach(animate)
 
 		function animate(elem, index) {
-			elem.addEventListener('animationend', function () {
-				elem.classList.add('fill');
-			})
 			setTimeout(function (e) {
 				elem.classList.add('draw');
-			}, index * 500)
+			}, index * 200)
 		}
 	</script>
 </body>
