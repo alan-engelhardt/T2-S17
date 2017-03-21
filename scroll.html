@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>scroll</title>
+	<style>
+		div {
+			height: 3000px;
+		}
+
+		h3 {
+			position: fixed;
+		}
+	</style>
+</head>
+
+<body onscroll="track">
+	<h3>You haven't scrolled yet</h3>
+	<div></div>
+	<script>
+		let header = document.querySelector('h3')
+		window.addEventListener('scroll', track)
+
+		function track() {
+			console.log(window.pageYOffset)
+			header.innerHTML = "You have scrolled " + window.pageYOffset + " px from top of window"
+			if(window.pageYOffset > 1000){
+				header.style.color="red"
+			}else if(window.pageYOffset > 500){
+				header.style.color="blue"
+			}else{
+				header.style.color="inherit"
+			}
+		}
+	</script>
+</body>
+
+</html>
