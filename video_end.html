@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>video + js chaining</title>
+        <style>
+			#video.fade{
+				transition: 1s;
+				opacity: 0;
+			}
+		</style>
+    </head>
+
+    <body>
+<h1>Starts the video...</h1>
+        <video id="video" preload="auto" controls>
+            <source src="../images/bunny.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
+
+        <script>
+            var h1 = document.querySelector("h1");
+            var video = document.querySelector("#video");
+			var intv;
+
+            video.volume=.5;
+            //video.play();
+
+            video.addEventListener("ended", video_end);
+            video.addEventListener("play", video_play);
+
+            function video_end(){
+				clearInterval(intv)
+                h1.innerHTML="The end!"
+				video.classList.add('fade')
+            }
+
+            function video_play(){
+				let dur = video.duration
+				intv = setInterval(function(){
+					let pl = video.currentTime
+					h1.innerHTML="Time left: " + Math.round(dur-pl) + " sec.";
+				}, 1000);
+            }
+        </script>
+
+    </body>
+</html>
