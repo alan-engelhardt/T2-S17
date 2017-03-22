@@ -11,39 +11,52 @@
 			width: 900px;
 			height: 600px;
 			border: solid 1px;
+			background-color: #DEF;
 		}
 
 		div{
 			position: absolute;
+			background-size: cover;
 		}
 
 		#pig1, #pig2, #pig3{
-			width: 70px;
-			height: 100px;
-			background-color: pink;
+			width: 90px;
+			height: 115px;
+		}
+
+		#pig1{
+			background-image: url("3pigs/pig1.gif");
+		}
+
+		#pig2{
+			background-image: url("3pigs/pig2.gif");
+		}
+
+		#pig3{
+			background-image: url("3pigs/pig3.gif");
 		}
 
 		#wolf{
-			width: 50px;
-			height: 200px;
-			background-color: grey;
+			width: 100px;
+			height: 159px;
+			background-image: url("3pigs/wolf.png");
 		}
 
 		#house{
-			width: 200px;
-			height: 300px;
-			background-color: orange;
+			width: 250px;
+			height: 250px;
+			background-image: url("3pigs/house.png");
 		}
 	</style>
 </head>
 
 <body>
 	<main id="scene">
+		<div id="house"></div>
 		<div id="pig1"></div>
 		<div id="pig2"></div>
 		<div id="pig3"></div>
 		<div id="wolf"></div>
-		<div id="house"></div>
 	</main>
 	<script></script>
 </body>
