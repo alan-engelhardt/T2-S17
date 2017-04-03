@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>image fade</title>
+		<style>
+			#imgContainer{
+				position: relative;
+				margin-top: 1em;
+			}
+			#imgContainer img{
+				position: absolute;
+				top: 0;
+				max-width: 98vw;
+			}
+			.fade{
+				opacity: 0;
+				transition: .5s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="imgContainer">
+			<img src="../images/1800x400_building.jpg" alt="image">
+			<img src="../images/1800x400_drop.jpg" alt="image">
+			<img src="../images/1800x400_future.jpg" alt="image">
+			<img src="../images/1800x400_town.jpg" alt="image">
+		</div>
+
+		<script>
+			"use strict";
+			let imageContainer = document.querySelector('#imageContainer');
+			let intv = setInterval(function(){
+				let images = document.querySelectorAll('img');
+				let image = images[images.length-1];
+				let parent = image.parentElement;
+				image.classList.add('fade');
+				image.addEventListener('transitionend', function(){
+					parent.removeChild(image);
+					parent.insertBefore(image, parent.childNodes[0]);
+					image.classList.remove('fade');
+				});
+			}, 2000);
+		</script>
+	</body>
+</html>
