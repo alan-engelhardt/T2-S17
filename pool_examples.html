@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>eval</title>
+		<style>
+			#imgContainer{
+				position: relative;
+				margin-top: 1em;
+			}
+
+			#imgContainer img{
+				position: absolute;
+				top: 0;
+				max-width: 98vw;
+			}
+			.top{
+				z-index: 20;
+				transition: 1s;
+			}
+			.middle{
+				z-index: 10;
+			}
+			.bottom{
+				z-index: 0;
+			}
+			.fadeOut{
+				opacity: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Never do this! <code>eval()</code></h1>
+		<input type="text">
+		<button>eval</button>
+		<h1 id="clock">00:00:00</h1>
+		<button id="start">start</button>
+		<button id="stop">stop</button>
+		<div id="imgContainer">
+			<img src="../images/1800x400_building.jpg" class="top">
+			<img src="../images/1800x400_drop.jpg" class="middle">
+			<img src="../images/1800x400_future.jpg" class="bottom">
+		</div>
+		<script>
+			//dangerous input + eval
+			let input = document.querySelector('input');
+			let button = document.querySelector('button');
+			button.addEventListener('click', doIt);
+			function doIt(){
+				console.log(eval(input.value));
+			}
+
+			//running clock/timer
+			let counter = 0;
+			let clock = document.querySelector('#clock');
+			let start = document.querySelector('#start');
+			let stop = document.querySelector('#stop');
+			let int;
+			start.addEventListener('click', function(){
+				int = setInterval(function(){
+					counter++
+					let sec = add0(counter % 60);
+					let min = add0(Math.floor(counter / 60) % 60);
+					let hour = add0(Math.floor((counter / 60) / 60) % 24);
+					clock.innerHTML= hour + ":" + min + ":" + sec;
+				}, 1);
+			})
+			stop.addEventListener('click', function(){
+				clearInterval(int);
+			})
+
+			function add0(val){
+				if(val<10){
+					return "0"+val;
+				}else{
+					return val;
+				}
+			}
+
+			//image fader
+			let imgContainer = document.querySelector('#imgContainer');
+			imgContainer.addEventListener('click', function(){
+				let topimg = document.querySelector('.top');
+				let middleimg = document.querySelector('.middle');
+				let bottomimg = document.querySelector('.bottom');
+				topimg.classList.add('fadeOut');
+				topimg.addEventListener('transitionend', swap);
+				function swap(){
+					topimg.classList.add('bottom');
+					topimg.classList.remove('top');
+					topimg.classList.remove('fadeOut');
+					middleimg.classList.add('top');
+					middleimg.classList.remove('middle');
+					bottomimg.classList.add('middle');
+					bottomimg.classList.remove('bottom');
+					topimg.removeEventListener('transitionend', swap);
+				}
+			});
+		</script>
+	</body>
+</html>
