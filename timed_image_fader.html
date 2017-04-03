@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>image Transition</title>
+		<style>
+			#imgContainer{
+				position: relative;
+				margin-top: 1em;
+			}
+			#imgContainer img{
+				position: absolute;
+				top: 0;
+				max-width: 98vw;
+			}
+			.Transition{
+				transform: scale(1.1);
+				opacity: 0;
+				transition: 2s;
+			}
+		</style>
+	</head>
+
+	<body onload="startImageTransition()">
+		<div id="imgContainer">
+			<img src="../images/1800x400_building.jpg" alt="image">
+			<img src="../images/1800x400_drop.jpg" alt="image">
+			<img src="../images/1800x400_future.jpg" alt="image">
+			<img src="../images/1800x400_town.jpg" alt="image">
+		</div>
+		<script>
+			"use strict";
+			let imgContainer = document.querySelector('#imgContainer');
+			let speed = 3000;
+			let intv;
+
+			imgContainer.addEventListener('mouseenter', pauseImageTransition);
+			imgContainer.addEventListener('mouseleave', startImageTransition);
+
+			function pauseImageTransition(){
+				clearInterval(intv);
+				console.log('pause');
+			}
+
+			function startImageTransition(){
+				intv = setInterval(imageTransition, speed);
+				console.log('run');
+			}
+
+			function imageTransition(){
+				let image = document.querySelector('img:last-child');
+				image.classList.add('Transition');
+				image.addEventListener('transitionend', function(){
+					imgContainer.removeChild(image);
+					imgContainer.insertBefore(image, imgContainer.firstChild);
+					image.classList.remove('Transition');
+				});
+			}
+		</script>
+	</body>
+</html>
