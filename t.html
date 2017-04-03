@@ -31,15 +31,13 @@
 
 		<script>
 			"use strict";
-			let imageContainer = document.querySelector('#imageContainer');
 			let intv = setInterval(function(){
-				let images = document.querySelectorAll('img');
-				let image = images[images.length-1];
+				let image = document.querySelector('img:last-child');
 				let parent = image.parentElement;
 				image.classList.add('fade');
 				image.addEventListener('transitionend', function(){
 					parent.removeChild(image);
-					parent.insertBefore(image, parent.childNodes[0]);
+					parent.insertBefore(image, parent.firstChild);
 					image.classList.remove('fade');
 				});
 			}, 2000);
